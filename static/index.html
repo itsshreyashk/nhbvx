@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>NHBVX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
+
 <body>
-    hi
+    <div class="flex" aria-disabled="false" aria-details="main view" class="space-x-2 flex">
+        <input type="text" name="given_url" id="given_url" aria-autocomplete="both" aria-multiline="false"
+            aria-required="true" aria-busy="false" class="" placeholder="URL">
+        <button type="submit" id="submit_url" aria-disabled="false" aria-busy="false" aria-autocomplete="false"
+            aria-details="shorten the url" class="px-4 py-2 rounded" onclick="short_the_url()">Shorten</button>
+    </div>
+    <span class="p-2" id="shortened_url" aria-details="shortened url"
+        style="margin: 10px 20px; padding: 10px 20px 20px 10px;">
+        Please submit to see shortened url
+    </span>
+    <script>
+        const short_the_url = async () => {
+            const given_url = document.getElementById("given_url")
+            const shortened_url = document.getElementById("shortened_url")
+
+            let url = given_url.value
+            if (!url) {
+                alert("Please enter a valid URL")
+                return
+            }
+            try {
+                const response = await fetch(`http://localhost:8080/shorten/${url}`)
+                const shortened_url_final = await response.json()
+                shortened_url.innerHTML = `Your shortened URL for ${url} is ${shortened_url_final}`
+            } catch (err) {
+                console.error(err)
+            }
+        }
+    </script>
 </body>
+
 </html>
