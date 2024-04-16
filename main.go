@@ -34,8 +34,6 @@ func gRT(length int)  {
 
 	rd_chars := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQ"
 
-	randomNum := randGen.Intn(max-min+1) + min
-
 
 }
 func main() {
