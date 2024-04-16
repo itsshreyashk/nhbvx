@@ -6,16 +6,40 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/gorilla/mux"
 	"context"
+
+	"github.com/gorilla/mux"
+
 	// "encoding/json"
 	"github.com/joho/godotenv"
 	// "go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+
+	/*Ext.*/
+	"math/rand"
+	"math/random"
+	"time"
 )
 
+type urlPair struct {
+	OriginalURL string `bson:"original_url"`
+	ShortenedURL string `bson:"shortened_url"`
+}
+
+func gRT(length int)  {
+    randSource := rand.NewSource(time.Now().UnixNano())
+	randGen := rand.New(randSource)
+
+
+	rd_chars := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQ"
+
+	randomNum := randGen.Intn(max-min+1) + min
+
+
+}
 func main() {
+	/*Database*/
 	err := godotenv.Load(".env")
 	if err!= nil {
         log.Fatal("Error loading.env file")
@@ -58,7 +82,7 @@ func main() {
 		vars := mux.Vars(r)
         url := vars["url"]
         fmt.Printf("as %v", url)
-	})
+	}).Methods("GET")
 	fmt.Println("Listening...")
 	http.ListenAndServe(":8080", r)
 }
