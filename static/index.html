@@ -10,11 +10,11 @@
 </head>
 
 <body>
-    <div class="flex" aria-disabled="false" aria-details="main view" class="space-x-2 flex">
+    <div class="flex space-x-2 items-center justify-center px-4 py-2" aria-disabled="false" aria-details="main view">
         <input type="text" name="given_url" id="given_url" aria-autocomplete="both" aria-multiline="false"
-            aria-required="true" aria-busy="false" class="" placeholder="URL">
+            aria-required="true" aria-busy="false" class="px-4 py-2 border-4 border-blue-600 outline-none" placeholder="URL">
         <button type="submit" id="submit_url" aria-disabled="false" aria-busy="false" aria-autocomplete="false"
-            aria-details="shorten the url" class="px-4 py-2 rounded" onclick="short_the_url()">Shorten</button>
+            aria-details="shorten the url" class="px-4 py-2 rounded hover:bg-black hover:text-white active:opacity-70" onclick="short_the_url()">Shorten</button>
     </div>
     <span class="p-2" id="shortened_url" aria-details="shortened url"
         style="margin: 10px 20px; padding: 10px 20px 20px 10px;">
